@@ -18,7 +18,7 @@ const BinarySearchVisualizer = () => {
   const [found, setFound] = useState<boolean | null>(null);
   const [searching, setSearching] = useState<boolean>(false);
   const [foundIndex, setFoundIndex] = useState<number | null>(null);
-  const elementWidth = 56; 
+  const elementWidth = 56;
 
   useEffect(() => {
     const initialArray: number[] = [];
@@ -187,20 +187,45 @@ const BinarySearchVisualizer = () => {
       </div>
 
       {found !== null && (
-        <p
-          className={`mt-4 text-lg font-semibold px-4 py-2 rounded border-2 
+        <>
+          <p
+            className={`mt-4 text-lg font-semibold px-4 py-2 rounded border-2 
       ${
         found
           ? "border-[#2E8B57] bg-[#E6F4EA] text-[#2E8B57]"
           : "border-[#800000] bg-[#FDECEC] text-[#800000]"
       }`}
-        >
-          {found
-            ? `Element Found at index ${foundIndex} and position ${
-                foundIndex !== null ? foundIndex + 1 : "unknown"
-              }.`
-            : "Element Not Found!"}
-        </p>
+          >
+            {found
+              ? `Element Found at index ${foundIndex} and position ${
+                  foundIndex !== null ? foundIndex + 1 : "unknown"
+                }.`
+              : "Element Not Found!"}
+          </p>
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg text-center mt-7 mb-10">
+            <h2 className="text-2xl font-bold text-primary text-gray-800">
+              Time Complexity Analysis
+            </h2>
+            <div className="mt-4 space-y-2">
+              <p className="text-lg font-semibold text-gray-800">
+                <span className="text-secondary">Best Case:</span> O(1) → When
+                the element is found at the middle.
+              </p>
+              <p className="text-lg font-semibold text-gray-800">
+                <span className="text-red-500">Worst Case:</span> O(log n) →
+                When searching reaches the last level.
+              </p>
+              <p className="text-lg font-semibold text-gray-800">
+                <span className="text-yellow-500">Average Case:</span> O(log n)
+                → Expected number of comparisons.
+              </p>
+              <p className="text-lg font-semibold text-gray-800">
+                <span className="text-blue-500">Recurrence Relation:</span> T(n)
+                = T(n/2) + O(1)
+              </p>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
